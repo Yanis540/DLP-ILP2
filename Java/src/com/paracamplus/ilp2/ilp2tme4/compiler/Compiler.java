@@ -39,7 +39,7 @@ implements IASTvisitor<Void, Compiler.Context, CompilationException> {
     }
 
 
-    public Void visit(IASTUnless iast,com.paracamplus.ilp2.compiler.Compiler.Context context) throws CompilationException {
+    public Void visit(IASTUnless iast,Context context) throws CompilationException {
         IASTvariable tmp1 = context.newTemporaryVariable();
         emit("  ILP_Object " + tmp1.getMangledName() + "; \n");
         Context c = context.redirect(new AssignDestination(tmp1));
