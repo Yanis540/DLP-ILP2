@@ -9,6 +9,6 @@
 	</classpathentry>
 	<classpathentry kind="lib" path="Java/jars/jing.jar" sourcepath="Java/jars/jing-20091111/src.zip"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
-	<classpathentry kind="lib" path="Java/jars/antlr-4.4-complete.jar"/>
+	<classpathentry exported="true" kind="lib" path="Java/jars/antlr-4.4-complete.jar"/>
 	<classpathentry kind="output" path="Java/bin"/>
 </classpath>
