@@ -17,3 +17,12 @@ TME4:
   artifacts:
     reports:
       junit: report.xml
+TME5:
+  stage: cours
+  script: >
+    /home/dlp/run.sh -id ILP2 -name ILP2
+    com.paracamplus.ilp2.ilp2tme5.partie2.test.InterpreterTest
+    com.paracamplus.ilp2.ilp2tme5.partie2.test.CompilerTest
+  artifacts:
+    reports:
+      junit: report.xml

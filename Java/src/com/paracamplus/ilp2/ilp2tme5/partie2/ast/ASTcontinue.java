@@ -1,8 +1,8 @@
-package com.paracamplus.ilp2.ilp2tme5.ast;
+package com.paracamplus.ilp2.ilp2tme5.partie2.ast;
 
 import com.paracamplus.ilp1.ast.ASTexpression;
-import com.paracamplus.ilp2.ilp2tme5.interfaces.IASTcontinue;
-import com.paracamplus.ilp2.ilp2tme5.interfaces.IASTvisitor;
+import com.paracamplus.ilp2.ilp2tme5.partie2.interfaces.IASTcontinue;
+import com.paracamplus.ilp2.ilp2tme5.partie2.interfaces.IASTvisitor;
 
 public class ASTcontinue extends ASTexpression implements IASTcontinue {
     public ASTcontinue(){

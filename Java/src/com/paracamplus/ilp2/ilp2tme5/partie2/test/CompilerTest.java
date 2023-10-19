@@ -1,4 +1,4 @@
-package com.paracamplus.ilp2.ilp2tme5.test;
+package com.paracamplus.ilp2.ilp2tme5.partie2.test;
 
 import java.io.File;
 import java.util.Collection;
@@ -16,10 +16,10 @@ import com.paracamplus.ilp1.compiler.optimizer.IdentityOptimizer;
 import com.paracamplus.ilp1.compiler.test.CompilerRunner;
 import com.paracamplus.ilp1.parser.xml.IXMLParser;
 import com.paracamplus.ilp2.parser.xml.XMLParser;
-import com.paracamplus.ilp2.ilp2tme5.interfaces.IASTfactory;
-import com.paracamplus.ilp2.ilp2tme5.ast.ASTfactory;
-import com.paracamplus.ilp2.ilp2tme5.parser.ILPMLParser;
-import com.paracamplus.ilp2.ilp2tme5.compiler.Compiler;
+import com.paracamplus.ilp2.ilp2tme5.partie2.interfaces.IASTfactory;
+import com.paracamplus.ilp2.ilp2tme5.partie2.ast.ASTfactory;
+import com.paracamplus.ilp2.ilp2tme5.partie2.parser.ILPMLParser;
+import com.paracamplus.ilp2.ilp2tme5.partie2.compiler.Compiler;
 
 public class CompilerTest extends com.paracamplus.ilp2.compiler.test.CompilerTest{
     protected static String[] samplesDirName = { "SamplesTME5"};

@@ -1,4 +1,4 @@
-package com.paracamplus.ilp2.ilp2tme5.exceptions;
+package com.paracamplus.ilp2.ilp2tme5.partie2.exceptions;
 
 import com.paracamplus.ilp1.interpreter.interfaces.EvaluationException;
 

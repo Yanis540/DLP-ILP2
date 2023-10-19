@@ -4,7 +4,7 @@
  * See http://mooc.paracamplus.com/ilp9
  * GPL version 3
  ***************************************************************** */
-package com.paracamplus.ilp2.ilp2tme5.test;
+package com.paracamplus.ilp2.ilp2tme5.partie2.test;
 
 
 
@@ -27,10 +27,10 @@ import com.paracamplus.ilp1.interpreter.test.InterpreterRunner;
 import com.paracamplus.ilp1.parser.xml.IXMLParser;
 import com.paracamplus.ilp2.parser.xml.XMLParser;
 
-import com.paracamplus.ilp2.ilp2tme5.interfaces.IASTfactory;
-import com.paracamplus.ilp2.ilp2tme5.interpreter.Interpreter;
-import com.paracamplus.ilp2.ilp2tme5.ast.ASTfactory;
-import com.paracamplus.ilp2.ilp2tme5.parser.ILPMLParser;
+import com.paracamplus.ilp2.ilp2tme5.partie2.interfaces.IASTfactory;
+import com.paracamplus.ilp2.ilp2tme5.partie2.interpreter.Interpreter;
+import com.paracamplus.ilp2.ilp2tme5.partie2.ast.ASTfactory;
+import com.paracamplus.ilp2.ilp2tme5.partie2.parser.ILPMLParser;
 
 @RunWith(Parameterized.class)
 public class InterpreterTest extends com.paracamplus.ilp1.interpreter.test.InterpreterTest {

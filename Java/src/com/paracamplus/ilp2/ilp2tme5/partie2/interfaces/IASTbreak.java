@@ -1,4 +1,4 @@
-package com.paracamplus.ilp2.ilp2tme5.interfaces;
+package com.paracamplus.ilp2.ilp2tme5.partie2.interfaces;
 
 
 import com.paracamplus.ilp1.interfaces.IASTexpression;

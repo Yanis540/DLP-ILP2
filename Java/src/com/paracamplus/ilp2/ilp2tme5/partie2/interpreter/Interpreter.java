@@ -1,14 +1,14 @@
-package com.paracamplus.ilp2.ilp2tme5.interpreter;
+package com.paracamplus.ilp2.ilp2tme5.partie2.interpreter;
 
 import com.paracamplus.ilp1.interpreter.interfaces.EvaluationException;
 import com.paracamplus.ilp1.interpreter.interfaces.IGlobalVariableEnvironment;
 import com.paracamplus.ilp1.interpreter.interfaces.ILexicalEnvironment;
 import com.paracamplus.ilp1.interpreter.interfaces.IOperatorEnvironment;
-import com.paracamplus.ilp2.ilp2tme5.exceptions.BreakException;
-import com.paracamplus.ilp2.ilp2tme5.exceptions.ContinueException;
-import com.paracamplus.ilp2.ilp2tme5.interfaces.IASTbreak;
-import com.paracamplus.ilp2.ilp2tme5.interfaces.IASTcontinue;
-import com.paracamplus.ilp2.ilp2tme5.interfaces.IASTvisitor;
+import com.paracamplus.ilp2.ilp2tme5.partie2.exceptions.BreakException;
+import com.paracamplus.ilp2.ilp2tme5.partie2.exceptions.ContinueException;
+import com.paracamplus.ilp2.ilp2tme5.partie2.interfaces.IASTbreak;
+import com.paracamplus.ilp2.ilp2tme5.partie2.interfaces.IASTcontinue;
+import com.paracamplus.ilp2.ilp2tme5.partie2.interfaces.IASTvisitor;
 import com.paracamplus.ilp2.interfaces.IASTloop;
 
 public class Interpreter extends com.paracamplus.ilp2.interpreter.Interpreter implements IASTvisitor<Object, ILexicalEnvironment, EvaluationException> {

@@ -5,9 +5,9 @@
  * See http://mooc.paracamplus.com/ilp2
  * GPL version 3
  ***************************************************************** */
-package com.paracamplus.ilp2.ilp2tme5.compiler.normalizer;
-import com.paracamplus.ilp2.ilp2tme5.interfaces.IASTbreak;
-import com.paracamplus.ilp2.ilp2tme5.interfaces.IASTcontinue;
+package com.paracamplus.ilp2.ilp2tme5.partie2.compiler.normalizer;
+import com.paracamplus.ilp2.ilp2tme5.partie2.interfaces.IASTbreak;
+import com.paracamplus.ilp2.ilp2tme5.partie2.interfaces.IASTcontinue;
 
  public interface INormalizationFactory 
  	extends com.paracamplus.ilp2.compiler.normalizer.INormalizationFactory {

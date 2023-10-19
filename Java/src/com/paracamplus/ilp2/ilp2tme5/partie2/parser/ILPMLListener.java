@@ -1,4 +1,4 @@
-package com.paracamplus.ilp2.ilp2tme5.parser;
+package com.paracamplus.ilp2.ilp2tme5.partie2.parser;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +14,7 @@ import com.paracamplus.ilp1.interfaces.IASTvariable;
 import com.paracamplus.ilp2.interfaces.IASTdeclaration;
 import com.paracamplus.ilp2.interfaces.IASTfunctionDefinition;
 
-import com.paracamplus.ilp2.ilp2tme5.interfaces.IASTfactory;
+import com.paracamplus.ilp2.ilp2tme5.partie2.interfaces.IASTfactory;
 import antlr4.ILPMLgrammar2tme5Listener;
 import antlr4.ILPMLgrammar2tme5Parser.BreakContext;
 import antlr4.ILPMLgrammar2tme5Parser.ContinueContext;

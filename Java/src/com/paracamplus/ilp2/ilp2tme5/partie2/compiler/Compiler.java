@@ -1,4 +1,4 @@
-package com.paracamplus.ilp2.ilp2tme5.compiler;
+package com.paracamplus.ilp2.ilp2tme5.partie2.compiler;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -12,12 +12,12 @@ import com.paracamplus.ilp1.compiler.interfaces.IGlobalVariableEnvironment;
 import com.paracamplus.ilp1.compiler.interfaces.IOperatorEnvironment;
 import com.paracamplus.ilp2.compiler.interfaces.IASTCprogram;
 import com.paracamplus.ilp2.interfaces.IASTprogram;
-import com.paracamplus.ilp2.ilp2tme5.interfaces.IASTbreak;
-import com.paracamplus.ilp2.ilp2tme5.interfaces.IASTcontinue;
-import com.paracamplus.ilp2.ilp2tme5.interfaces.IASTvisitor;
-import com.paracamplus.ilp2.ilp2tme5.compiler.normalizer.INormalizationFactory;
-import com.paracamplus.ilp2.ilp2tme5.compiler.normalizer.NormalizationFactory;
-import com.paracamplus.ilp2.ilp2tme5.compiler.normalizer.Normalizer;
+import com.paracamplus.ilp2.ilp2tme5.partie2.interfaces.IASTbreak;
+import com.paracamplus.ilp2.ilp2tme5.partie2.interfaces.IASTcontinue;
+import com.paracamplus.ilp2.ilp2tme5.partie2.interfaces.IASTvisitor;
+import com.paracamplus.ilp2.ilp2tme5.partie2.compiler.normalizer.INormalizationFactory;
+import com.paracamplus.ilp2.ilp2tme5.partie2.compiler.normalizer.NormalizationFactory;
+import com.paracamplus.ilp2.ilp2tme5.partie2.compiler.normalizer.Normalizer;
 
 
 
