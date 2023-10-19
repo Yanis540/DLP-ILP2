@@ -24,6 +24,7 @@ TME5:
     com.paracamplus.ilp2.ilp2tme5.partie2.test.InterpreterTest
     com.paracamplus.ilp2.ilp2tme5.partie2.test.CompilerTest
     com.paracamplus.ilp2.ilp2tme5.partie3.test.InterpreterTest
+    com.paracamplus.ilp2.ilp2tme5.partie3.test.CompilerTest
   artifacts:
     reports:
       junit: report.xml
