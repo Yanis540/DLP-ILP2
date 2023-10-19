@@ -1,0 +1,7 @@
+b1 : while(true) do (
+    b2 : while (true) do (
+        if(1>0) then break b1; 
+        if(1>0) then continue c2; 
+    )
+)
+1;
