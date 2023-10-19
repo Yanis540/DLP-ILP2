@@ -35,7 +35,7 @@ import com.paracamplus.ilp2.ilp2tme5.partie2.parser.ILPMLParser;
 @RunWith(Parameterized.class)
 public class InterpreterTest extends com.paracamplus.ilp1.interpreter.test.InterpreterTest {
    
-    protected static String[] samplesDirName = { "SamplesTME5"};
+    protected static String[] samplesDirName = { "SamplesTME5/partie2"};
     protected static String pattern = ".*\\.ilpml";
     protected static String XMLgrammarFile = "XMLGrammars/grammar2.rng";
        

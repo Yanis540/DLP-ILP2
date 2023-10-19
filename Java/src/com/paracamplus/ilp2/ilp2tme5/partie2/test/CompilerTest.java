@@ -22,7 +22,7 @@ import com.paracamplus.ilp2.ilp2tme5.partie2.parser.ILPMLParser;
 import com.paracamplus.ilp2.ilp2tme5.partie2.compiler.Compiler;
 
 public class CompilerTest extends com.paracamplus.ilp2.compiler.test.CompilerTest{
-    protected static String[] samplesDirName = { "SamplesTME5"};
+    protected static String[] samplesDirName = { "SamplesTME5/partie2"};
     protected static String pattern = ".*\\.ilpml";
     protected static String scriptCommand = "C/compileThenRun.sh +gc";
     protected static String XMLgrammarFile = "XMLGrammars/grammar2.rng";
