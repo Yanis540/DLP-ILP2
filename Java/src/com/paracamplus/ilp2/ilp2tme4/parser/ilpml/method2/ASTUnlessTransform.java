@@ -68,9 +68,15 @@ public class ASTUnlessTransform implements IASTvisitor<IASTexpression, Void, Eva
     @Override
 	public IASTexpression visit(IASTinvocation iast, Void data) 
             throws EvaluationException {
+        IASTexpression[]arguments =  new IASTexpression[iast.getArguments().length];
+        int i = 0 ; 
+        for( IASTexpression argument : iast.getArguments()){
+            arguments[i] = (IASTexpression)argument.accept(this, data); 
+            i++; 
+        }
         return factory.newInvocation(
             iast.getFunction().accept(this, data),
-            iast.getArguments()
+            arguments
         );
     }
     
