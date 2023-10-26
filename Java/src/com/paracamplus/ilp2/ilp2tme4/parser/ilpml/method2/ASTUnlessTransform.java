@@ -99,7 +99,7 @@ public class ASTUnlessTransform implements IASTvisitor<IASTexpression, Void, Eva
         return factory.newAlternative(
             iast.getCondition().accept(this,data),
             iast.getConsequence().accept(this,data), 
-            iast.getConsequence().accept(this, data)
+            iast.getAlternant()==null ? null : iast.getAlternant().accept(this, data)
         );
     }
     
