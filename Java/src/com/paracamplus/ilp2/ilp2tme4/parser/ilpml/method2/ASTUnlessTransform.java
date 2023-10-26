@@ -34,7 +34,7 @@ public class ASTUnlessTransform implements IASTvisitor<IASTexpression, Void, Eva
         IASTfunctionDefinition [] functions = new IASTfunctionDefinition[iast.getFunctionDefinitions().length];
         int i = 0 ; 
         for ( IASTfunctionDefinition fd : iast.getFunctionDefinitions() ) 
-            functions[i] = fd;
+            functions[i] = (IASTfunctionDefinition)this.visit(fd,data);
         return factory.newProgram(
             functions, 
             iast.getBody().accept(this, data)
