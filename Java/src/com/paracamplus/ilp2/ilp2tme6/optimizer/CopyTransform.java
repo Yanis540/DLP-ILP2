@@ -2,12 +2,13 @@ package com.paracamplus.ilp2.ilp2tme6.optimizer;
 
 import javax.xml.crypto.Data;
 
-// import com.paracamplus.ilp1.compiler.EvaluationException;
+import com.paracamplus.ilp1.compiler.CompilationException;
+// import com.paracamplus.ilp1.compiler.CompilationException;
 import com.paracamplus.ilp1.interfaces.IASTalternative;
 import com.paracamplus.ilp1.interfaces.IASTbinaryOperation;
 import com.paracamplus.ilp1.interfaces.IASTblock;
 import com.paracamplus.ilp1.interfaces.IASTblock.IASTbinding;
-import com.paracamplus.ilp1.interpreter.interfaces.EvaluationException;
+// import com.paracamplus.ilp1.interpreter.interfaces.EvaluationException;
 import com.paracamplus.ilp1.interfaces.IASTboolean;
 import com.paracamplus.ilp1.interfaces.IASTexpression;
 import com.paracamplus.ilp1.interfaces.IASTfloat;
@@ -24,19 +25,21 @@ import com.paracamplus.ilp2.interfaces.IASTloop;
 import com.paracamplus.ilp2.interfaces.IASTprogram;
 import com.paracamplus.ilp2.interfaces.IASTvisitor;
 
-public class CopyTransform implements IASTvisitor<IASTexpression,Data,EvaluationException> {
+public class CopyTransform implements IASTvisitor<IASTexpression,Data,CompilationException> {
     public CopyTransform(IASTfactory factory){
         this.factory = factory; 
     }
     public IASTfactory factory; 
   
 	
-    public IASTprogram visit(IASTprogram iast, Data data) throws EvaluationException {
+    public IASTprogram visit(IASTprogram iast, Data data) throws CompilationException {
         
         IASTfunctionDefinition [] functions = new IASTfunctionDefinition[iast.getFunctionDefinitions().length];
         int i = 0 ; 
-        for ( IASTfunctionDefinition fd : iast.getFunctionDefinitions() ) 
-            functions[i] = (IASTfunctionDefinition)this.visit(fd,data);
+        for ( IASTfunctionDefinition fd : iast.getFunctionDefinitions() ) {
+            functions[i] = this.visit(fd,data);
+            i++; 
+        }
         return factory.newProgram(
             functions, 
             iast.getBody().accept(this, data)
@@ -47,34 +50,46 @@ public class CopyTransform implements IASTvisitor<IASTexpression,Data,Evaluation
             
     
 	public IASTexpression visit(IASTassignment iast, Data data) 
-            throws EvaluationException {
+            throws CompilationException {
         return factory.newAssignment(
             iast.getVariable(), 
             iast.getExpression().accept(this, data)
         );
     }
     
-    public Object visit(IASTfunctionDefinition iast, Data data) 
-            throws EvaluationException {
+    public IASTfunctionDefinition visit(IASTfunctionDefinition iast, Data data) 
+            throws CompilationException {
+        IASTvariable[]variables =  new IASTvariable[iast.getVariables().length];
+        int i = 0 ; 
+        for( IASTvariable var : iast.getVariables()){
+            variables[i] = (IASTvariable)this.visit(var,data).accept(this, data); 
+            i++; 
+        }
         return factory.newFunctionDefinition(
             iast.getFunctionVariable(), 
-            iast.getVariables(),
+            variables,
             iast.getBody().accept(this, data)
         );
     }
     
 	public IASTexpression visit(IASTinvocation iast, Data data) 
-            throws EvaluationException {
+            throws CompilationException {
+        IASTexpression[]arguments =  new IASTexpression[iast.getArguments().length];
+        int i = 0 ; 
+        for( IASTexpression argument : iast.getArguments()){
+            arguments[i] = (IASTexpression)argument.accept(this, data); 
+            i++; 
+        }
         return factory.newInvocation(
             iast.getFunction().accept(this, data),
-            iast.getArguments()
+            arguments
         );
     }
     
     
     
 	public IASTexpression visit(IASTloop iast, Data data) 
-            throws EvaluationException {
+            throws CompilationException {
         return factory.newLoop(
             iast.getCondition().accept(this, data), 
             iast.getBody().accept(this, data)
@@ -86,11 +101,11 @@ public class CopyTransform implements IASTvisitor<IASTexpression,Data,Evaluation
 
     //------------------------------------
     public IASTexpression visit(IASTalternative iast, Data data) 
-            throws EvaluationException {
+            throws CompilationException {
         return factory.newAlternative(
             iast.getCondition().accept(this,data),
             iast.getConsequence().accept(this,data), 
-            iast.getConsequence().accept(this, data)
+            iast.getAlternant()==null ? null : iast.getAlternant().accept(this, data)
         );
     }
     
@@ -98,7 +113,7 @@ public class CopyTransform implements IASTvisitor<IASTexpression,Data,Evaluation
 
     
 	public IASTexpression visit(IASTunaryOperation iast, Data data) 
-            throws EvaluationException {
+            throws CompilationException {
         return factory.newUnaryOperation(
             iast.getOperator(), 
             iast.getOperand().accept(this, data)
@@ -107,7 +122,7 @@ public class CopyTransform implements IASTvisitor<IASTexpression,Data,Evaluation
     
     
 	public IASTexpression visit(IASTbinaryOperation iast, Data data) 
-            throws EvaluationException {
+            throws CompilationException {
         return factory.newBinaryOperation(
             iast.getOperator(), 
             iast.getLeftOperand().accept(this, data),
@@ -117,7 +132,7 @@ public class CopyTransform implements IASTvisitor<IASTexpression,Data,Evaluation
 
     
 	public IASTexpression visit(IASTsequence iast, Data data) 
-            throws EvaluationException {
+            throws CompilationException {
         IASTexpression[] expressions = iast.getExpressions();
         IASTexpression[] expressions_accepted = new IASTexpression[expressions.length];
         int i= 0; 
@@ -130,7 +145,7 @@ public class CopyTransform implements IASTvisitor<IASTexpression,Data,Evaluation
     
     
 	public IASTexpression visit(IASTblock iast, Data data) 
-            throws EvaluationException {
+            throws CompilationException {
         IASTbinding[] bindings = new IASTbinding[iast.getBindings().length]; 
         int i = 0 ; 
         for ( IASTbinding binding : iast.getBindings() ) {
@@ -150,31 +165,31 @@ public class CopyTransform implements IASTvisitor<IASTexpression,Data,Evaluation
 
     
 	public IASTexpression visit(IASTboolean iast, Data data) 
-            throws EvaluationException {
+            throws CompilationException {
         return factory.newBooleanConstant(iast.getDescription()); 
     }
     
     
 	public IASTexpression visit(IASTinteger iast, Data data) 
-            throws EvaluationException {
+            throws CompilationException {
         return factory.newIntegerConstant(iast.getDescription()); 
     }
     
     
 	public IASTexpression visit(IASTfloat iast, Data data) 
-            throws EvaluationException {
+            throws CompilationException {
         return factory.newFloatConstant(iast.getDescription());
     }
     
     
 	public IASTexpression visit(IASTstring iast, Data data) 
-            throws EvaluationException {
+            throws CompilationException {
         return factory.newStringConstant(iast.getDescription());
     }
 
     
 	public IASTexpression visit(IASTvariable iast, Data data) 
-            throws EvaluationException {
+            throws CompilationException {
         return factory.newVariable(iast.getName()); 
     }
 
