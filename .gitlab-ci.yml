@@ -32,10 +32,10 @@ TME6:
   stage: cours
   script: >
     /home/dlp/run.sh -id ILP2 -name ILP2
-    com.paracamplus.ilp2.ilp2tme5.test.partie1.InterpreterTest
-    com.paracamplus.ilp2.ilp2tme5.test.partie1.CompilerTest
-    com.paracamplus.ilp2.ilp2tme5.test.partie2.InterpreterTest
-    com.paracamplus.ilp2.ilp2tme5.test.partie2.CompilerTest
+    com.paracamplus.ilp2.ilp2tme6.test.partie1.InterpreterTest
+    com.paracamplus.ilp2.ilp2tme6.test.partie1.CompilerTest
+    com.paracamplus.ilp2.ilp2tme6.test.partie2.InterpreterTest
+    com.paracamplus.ilp2.ilp2tme6.test.partie2.CompilerTest
   artifacts:
     reports:
       junit: report.xml
