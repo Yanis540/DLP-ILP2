@@ -38,6 +38,8 @@ TME6:
     com.paracamplus.ilp2.ilp2tme6.test.partie2.CompilerTest
     com.paracamplus.ilp2.ilp2tme6.test.partie3.InterpreterTest
     com.paracamplus.ilp2.ilp2tme6.test.partie3.CompilerTest
+    com.paracamplus.ilp2.ilp2tme6.test.partie4.InterpreterTest
+    com.paracamplus.ilp2.ilp2tme6.test.partie4.CompilerTest
   artifacts:
     reports:
       junit: report.xml

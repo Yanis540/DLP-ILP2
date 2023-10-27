@@ -23,6 +23,7 @@ public class Compiler extends com.paracamplus.ilp2.compiler.Compiler{
         iast = (IASTprogram)transformer.visit(iast, NormalizationEnvironment.EMPTY); 
         return iast; 
     }
+    @Override
     public IASTCprogram normalize(IASTprogram program) 
             throws CompilationException {
         program = this.rename(program); 
