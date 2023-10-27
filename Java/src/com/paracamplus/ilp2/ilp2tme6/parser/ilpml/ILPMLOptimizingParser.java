@@ -13,7 +13,7 @@ public class ILPMLOptimizingParser extends  com.paracamplus.ilp2.parser.ilpml.IL
     @Override
     public IASTprogram getProgram() throws ParseException {
 		try {
-			CopyTransform transformer =  new CopyTransform((IASTfactory) factory); 	
+			CopyTransform<Void> transformer =  new CopyTransform<Void>((IASTfactory) factory); 	
 			return transformer.visit(super.getProgram(),null);
 		} catch (Exception e) {
 			throw new ParseException(e);

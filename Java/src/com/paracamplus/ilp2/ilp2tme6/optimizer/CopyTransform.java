@@ -1,6 +1,5 @@
 package com.paracamplus.ilp2.ilp2tme6.optimizer;
 
-import javax.xml.crypto.Data;
 
 import com.paracamplus.ilp1.compiler.CompilationException;
 // import com.paracamplus.ilp1.compiler.CompilationException;
@@ -25,7 +24,7 @@ import com.paracamplus.ilp2.interfaces.IASTloop;
 import com.paracamplus.ilp2.interfaces.IASTprogram;
 import com.paracamplus.ilp2.interfaces.IASTvisitor;
 
-public class CopyTransform implements IASTvisitor<IASTexpression,Data,CompilationException> {
+public class CopyTransform<Data> implements IASTvisitor<IASTexpression,Data,CompilationException> {
     public CopyTransform(IASTfactory factory){
         this.factory = factory; 
     }
