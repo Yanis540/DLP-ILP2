@@ -1,0 +1,10 @@
+function add(n)(
+    n+1
+)
+
+function b()(
+    1
+)
+
+freeze (add,1)
+frozen(add)
