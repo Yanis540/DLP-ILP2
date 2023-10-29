@@ -1,30 +1,33 @@
 package com.paracamplus.ilp2.partiel2019.interpreter;
 
-import com.paracamplus.ilp1.interfaces.IASTvariable;
+import com.paracamplus.ilp1.interpreter.EmptyLexicalEnvironment;
 import com.paracamplus.ilp1.interpreter.interfaces.EvaluationException;
 import com.paracamplus.ilp1.interpreter.interfaces.IGlobalVariableEnvironment;
 import com.paracamplus.ilp1.interpreter.interfaces.ILexicalEnvironment;
 import com.paracamplus.ilp1.interpreter.interfaces.IOperatorEnvironment;
+import com.paracamplus.ilp1.interpreter.interfaces.Invocable;
 import com.paracamplus.ilp2.interfaces.IASTfunctionDefinition;
 import com.paracamplus.ilp2.interfaces.IASTprogram;
+import com.paracamplus.ilp2.partiel2019.ast.Function;
 import com.paracamplus.ilp2.partiel2019.interfaces.IASTfreeze;
 import com.paracamplus.ilp2.partiel2019.interfaces.IASTfrozen;
 import com.paracamplus.ilp2.partiel2019.interfaces.IASTvisitor;
+import com.paracamplus.ilp2.partiel2019.interfaces.IFunction;
 
 public class Interpreter extends com.paracamplus.ilp2.interpreter.Interpreter
 implements IASTvisitor<Object, ILexicalEnvironment, EvaluationException>  {
-    private IASTfunctionDefinition[]functions; 
-    private Object froozenValue= null;
-    private IASTfunctionDefinition frozenFunction = null;    
+    private IFunction[]functions ; 
     public Interpreter(IGlobalVariableEnvironment globalVariableEnvironment,
 			IOperatorEnvironment operatorEnvironment) {
 		super(globalVariableEnvironment, operatorEnvironment);
 	}
     public Object visit(IASTprogram iast, ILexicalEnvironment lexenv) 
         throws EvaluationException {
-        this.functions = iast.getFunctionDefinitions().clone();
+        this.functions = new IFunction[iast.getFunctionDefinitions().length];
+        int i = 0 ; 
         for ( IASTfunctionDefinition fd : iast.getFunctionDefinitions() ) {
             Object f = this.visit(fd, lexenv);
+            functions[i] = (IFunction)f; 
             String v = fd.getName();
             getGlobalVariableEnvironment().addGlobalVariableValue(v, f);
         }
@@ -34,27 +37,33 @@ implements IASTvisitor<Object, ILexicalEnvironment, EvaluationException>  {
             return exc;
         }
     }
+
+    public Invocable visit(IASTfunctionDefinition iast, ILexicalEnvironment lexenv) 
+            throws EvaluationException {
+        Invocable fun = new Function(iast.getVariables(),
+            iast.getBody(),
+            new EmptyLexicalEnvironment()
+        );
+        return fun;
+    }
+
     @Override
     public Object visit(IASTfreeze iast, ILexicalEnvironment data) throws EvaluationException {
         Object value = super.visit(iast, data);
-        IASTvariable functionVariable = (IASTvariable)iast.getFunction();
-        for(IASTfunctionDefinition fd : this.functions)
-            if(fd.getName().equals(functionVariable.getName())){
-                this.froozenValue= value; 
-                this.frozenFunction = fd;
-                break ; 
-            }
+        Function function = (Function)iast.getFunction().accept(this, data);
+        function.setCache(value);
         return value; 
     }
 
     @Override
     public Object visit(IASTfrozen iast, ILexicalEnvironment data) throws EvaluationException {
-        IASTvariable functionVariable = (IASTvariable)iast.getFunction();
-        if(frozenFunction == null || 
-            ! (frozenFunction.getName().equals(functionVariable.getName()))
-        )
-            throw new EvaluationException("Called  freeze on unfrozen function : "+functionVariable.getName());
-        return this.froozenValue; 
+        Function function = (Function)iast.getFunction().accept(this, data);
+        System.out.println(function);
+        if(!(function instanceof Function))
+            throw new EvaluationException("Idk");
+        if(function.getCache() == null)
+            throw new EvaluationException("Function not cached"); 
+        return function.getCache();
 
     }
 
