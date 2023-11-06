@@ -1,0 +1,4 @@
+let x = -1 in 
+
+for(x = 0; x<2; x= x+1) do
+    print(x);
