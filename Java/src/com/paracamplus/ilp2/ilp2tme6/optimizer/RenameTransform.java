@@ -13,7 +13,7 @@ import com.paracamplus.ilp2.interfaces.IASTfactory;
 import com.paracamplus.ilp2.interfaces.IASTfunctionDefinition;
 
 public class RenameTransform extends CopyTransform<INormalizationEnvironment>{
-    private int counter; 
+    private int counter= 0; 
     public RenameTransform(IASTfactory factory) {
         super(factory);
     }
